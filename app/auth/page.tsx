@@ -41,9 +41,9 @@ export default function AuthPage() {
 
 			// Redirect based on role
 			if (data.user.role === "counselor") {
-				router.push("/counselor/dashboard");
-			} else {
 				router.push("/dashboard");
+			} else {
+				router.push("/");
 			}
 		} catch (err: any) {
 			setError(err.message);
