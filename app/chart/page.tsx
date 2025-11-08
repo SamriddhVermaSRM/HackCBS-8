@@ -1,7 +1,8 @@
+'use client'
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
 import { ChartAreaDefault } from "@/components/chart-area-default";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const Card: React.FC<{ title?: string; children: React.ReactNode }> = ({
   title,
   children,

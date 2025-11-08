@@ -15,16 +15,20 @@ function Lessons({
   currentLessonId,
   setCurrentLessonId,
   setLessonInfo,
+  moduleId
 }: {
   currentLesson: Lesson;
   currentLessonId: number;
   setCurrentLessonId: Dispatch<React.SetStateAction<number>>;
   setLessonInfo: Dispatch<React.SetStateAction<LessonLog | null>>;
+  moduleId:string;
+
 }) {
   const [loadedAt, setLodedAt] = useState<number | null>(null);
   const setLoadingTime = useEffectEvent(() => {
     setLodedAt(Date.now());
   });
+  const [IsVoiceLoading,setIsVoiceLoading] = useState<boolean>(false)
   const [url, setUrl] = useState<string | undefined>(
     "https://murf.ai/user-upload/one-day-temp/42ab325e-b8ba-4283-8b70-5f9eba231fd8.wav?response-cache-control=max-age%3D604801&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251011T000000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=259200&X-Amz-Credential=AKIA27M5532DYKBCJICE%2F20251011%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=0c2da161912f9a2612de95d77bbd5556d103569ebfc61c6b1d4056fa108e77b5"
   );
@@ -68,14 +72,14 @@ const getVoice = async () => {
 
   useEffect(() => {
     setLoadingTime();
-    // fechAudio()
+    getVoice()
   }, []);
 
   const handleClick = () => {
     if (!currentLesson.end) setCurrentLessonId(currentLessonId + 1);
     const info = {
       answerTime: Date.now() - loadedAt!,
-      module_id: "module_1",
+      module_id: moduleId,
       lesson_id: currentLessonId,
       timestamp: new Date().toISOString(),
     };
@@ -94,7 +98,7 @@ const getVoice = async () => {
     }
     const info = {
       answerTime: Date.now() - loadedAt!,
-      module_id: "module_1",
+      module_id: moduleId,
       lesson_id: currentLessonId,
       timestamp: new Date().toISOString(),
     };

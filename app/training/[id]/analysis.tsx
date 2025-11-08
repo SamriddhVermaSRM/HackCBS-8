@@ -43,7 +43,6 @@ export default function EmotionAnalysisAndLogging({
     setTimeout(() => mediaRecorderRef.current?.stop(), MAX_AUDIO_LENGTH * 1000);
 
     vidRef.current.srcObject = videoStream;
-    await vidRef.current.play();
   });
 
   useEffect(() => {

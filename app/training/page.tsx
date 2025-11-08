@@ -14,7 +14,6 @@ export default function TrainingPage() {
   const [modules, setModules] = useState<Module[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [token, setToken] = useState<string | undefined>(undefined);
 
   const fetchData = async () => {
     setLoading(true);
@@ -35,10 +34,8 @@ export default function TrainingPage() {
 
   useEffect(() => {
     window.cookieStore.get("jwt").then((cookie) => {
-      console.log(cookie);
-      setToken(cookie?.value);
-      if(token === undefined){
-        // router.push("/")
+      if(cookie === null){
+        router.replace("/")
       }
     });
     fetchData();
