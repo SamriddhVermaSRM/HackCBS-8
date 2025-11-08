@@ -5,7 +5,7 @@ import { useScroll, useTransform, motion } from "framer-motion"
 import { useRef } from "react"
 
 export default function Section() {
-  const container = useRef()
+  const container = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
@@ -20,7 +20,7 @@ export default function Section() {
     >
       <div className="fixed top-[-10vh] left-0 h-[120vh] w-full">
         <motion.div style={{ y }} className="relative w-full h-full">
-          <Image src="/images/spiral-circles.jpg" fill alt="Abstract spiral circles" style={{ objectFit: "cover" }} />
+          <Image src="/images/spiral-circles-new.jpg" fill alt="Abstract spiral circles" style={{ objectFit: "cover" }} />
         </motion.div>
       </div>
 

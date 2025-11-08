@@ -1,68 +1,66 @@
 "use client";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+type Module = {
+  module_id: string;
+  name: string;
+  description: string;
+};
 
 export default function TrainingPage() {
-  const modules = [
-    {
-      module_id: "Module 1A",
-      name: "Comparision to Others",
-      description:
-        "A training module to help you understand the importance of being good enough.",
-    },
-    {
-      module_id: "Module 1B",
-      name: "Being Good Enough?",
-      description:
-        "A training module to help you understand the importance of being good enough.",
-    },
-    {
-      module_id: "Module 1C",
-      name: "Handling Peer Pressure",
-      description:
-        "A module about making choices when facing pressure from friends.",
-    },
-    {
-      module_id: "Module 1D",
-      name: "Dealing with Disappointment",
-      description:
-        "A module about coping with setbacks and not achieving a desired outcome.",
-    },
-    {
-      module_id: "Module 2A",
-      name: "Empathy & Perspective",
-      description:
-        "Understanding why someone else might act a certain way, even if it affects you.",
-    },
-    {
-      module_id: "Module 2B",
-      name: "Navigating Online Worlds",
-      description:
-        "Dealing with negativity online and choosing responsible actions.",
-    },
-    {
-      module_id: "Module 2C",
-      name: "Plans Change!",
-      description:
-        "Learning to adapt and manage feelings when things don't go as expected.",
-    },
-    {
-      module_id: "Module 2D",
-      name: "Effort vs. Outcome",
-      description:
-        "Recognizing the value of your own work and dealing with fairness in group settings.",
-    },
-  ];
+  const router = useRouter();
+  const [modules, setModules] = useState<Module[]>([]);
+  const fechData = async() => {
+    const data = await axios.get("http://localhost:3000/api/module")
+    console.log(data.data);
+    setModules(data.data)
+  };
+  useEffect(()=>{
+    fechData()
+  },[])
   return (
     <>
-      <main className="h-full flex justify-center items-center">
-        <div className="flex justify-center items-center flex-col ">
-          {modules.map((module) => (
-            <div className="border-2 rounded-[10px] p-1 m-1.5">
-              {module.name}
-              <br></br>
-              {module.description}
-            </div>
-          ))}
-        </div>
+      <main className="min-h-screen flex items-start justify-center py-12 px-4">
+        <section className="w-full max-w-5xl">
+          <header className="mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold">Training Modules</h1>
+            <p className="text-sm mt-1">
+              Short lessons to help build social and emotional skills.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {modules.map((module) => (
+              <article
+                key={module.module_id}
+                className="bg-card text-card-foreground border border-border rounded-lg p-4 shadow-sm"
+                aria-labelledby={`${module.module_id}-title`}
+              >
+                <h2
+                  id={`${module.module_id}-title`}
+                  className="font-semibold text-lg mb-2"
+                >
+                  {module.name}
+                </h2>
+                <p className="text-sm leading-relaxed">{module.description}</p>
+                <div className="mt-4">
+                  <button
+                    onClick={() =>
+                      router.push(
+                        `/training/${encodeURIComponent(module.module_id)}`
+                      )
+                    }
+                    className="px-3 py-1 text-sm rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    Start
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );

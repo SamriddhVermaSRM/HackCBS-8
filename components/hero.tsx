@@ -20,7 +20,7 @@ export default function Hero() {
       {/* attach the ref to the element being observed */}
       <motion.div ref={container} style={{ y }} className="relative h-full">
         <Image
-          src="/images/mountain-landscape.jpg"
+          src="/images/mountain-landscape-new.png"
           fill
           alt="Mountain landscape background"
           style={{ objectFit: "cover" }}
