@@ -12,7 +12,7 @@ export default function Training() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/module/${decodeURIComponent(window.location.pathname).split("/").pop()}`,
+      `/api/module/${decodeURIComponent(window.location.pathname).split("/").pop()}`,
       {
         method: "POST",
         headers: {

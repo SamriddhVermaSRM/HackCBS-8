@@ -120,3 +120,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+
+.bacche {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 30%;
+    align-items: flex-end;
+}
+.teacher {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 30%;
+    align-items: flex-start;
+}
+.girl {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 30%;
+    align-items: flex-start;
+}
+.boy {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 30%;
+    align-items: flex-end;
+}

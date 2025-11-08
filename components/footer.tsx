@@ -1,67 +1,90 @@
-import Link from "next/link"
-
+import Link from "next/link";
+import { Eye } from "lucide-react";
 export default function Footer() {
   return (
-    <div
-      className="relative h-[400px] sm:h-[600px] lg:h-[800px] max-h-[800px]"
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-    >
-      <div className="relative h-[calc(100vh+400px)] sm:h-[calc(100vh+600px)] lg:h-[calc(100vh+800px)] -top-[100vh]">
-        <div className="h-[400px] sm:h-[600px] lg:h-[800px] sticky top-[calc(100vh-400px)] sm:top-[calc(100vh-600px)] lg:top-[calc(100vh-800px)]">
-          <div className="bg-neutral-900 py-4 sm:py-6 lg:py-8 px-4 sm:px-6 h-full w-full flex flex-col justify-between">
-            <div className="flex shrink-0 gap-8 sm:gap-12 lg:gap-20">
-              <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">About</h3>
-                <Link
-                  href="/projects"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/mission"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Our Mission
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Contact Us
-                </Link>
+    <footer className="py-12 bg-gray-900 text-gray-400">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <Eye className="w-6 h-6 text-white" />
               </div>
-              <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Education</h3>
-                <Link
-                  href="/news"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  News
-                </Link>
-                <Link
-                  href="/learn"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Learn
-                </Link>
-                <Link
-                  href="/publications"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Publications
-                </Link>
-              </div>
+              <span className="text-white font-bold text-lg">To Observe</span>
             </div>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
-              <h1 className="text-[18vw] sm:text-[16vw] lg:text-[14vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-bold tracking-tight">
-                RESEARCH
-              </h1>
-              <p className="text-white text-sm sm:text-base">©copyright</p>
-            </div>
+            <p className="text-sm">
+              Building emotionally strong students through AI-powered learning
+              and observation.
+            </p>
+          </div>
+          <div>
+            <h5 className="text-white font-semibold mb-4">Platform</h5>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <button className="hover:text-white transition-colors">
+                  For Students
+                </button>
+              </li>
+              <li>
+                <button className="hover:text-white transition-colors">
+                  For Counselors
+                </button>
+              </li>
+              <li>
+                <button className="hover:text-white transition-colors">
+                  For Schools
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="text-white font-semibold mb-4">Resources</h5>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  About CASEL
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Research
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Support
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="text-white font-semibold mb-4">Legal</h5>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  COPPA Compliance
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+        <div className="border-t border-gray-800 pt-8 text-center text-sm">
+          <p>
+            &copy; 2025 To Observe. All rights reserved. Built with care for
+            emotional wellness.
+          </p>
+        </div>
       </div>
-    </div>
-  )
+    </footer>
+  );
 }
