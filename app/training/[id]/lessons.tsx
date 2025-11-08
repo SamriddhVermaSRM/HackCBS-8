@@ -1,6 +1,7 @@
 "use client";
 
 import { Lesson, LessonLog } from "@/types/types";
+import axios from "axios";
 import {
   Dispatch,
   FormEvent,
@@ -24,9 +25,50 @@ function Lessons({
   const setLoadingTime = useEffectEvent(() => {
     setLodedAt(Date.now());
   });
+  const [url, setUrl] = useState<string | undefined>(
+    "https://murf.ai/user-upload/one-day-temp/42ab325e-b8ba-4283-8b70-5f9eba231fd8.wav?response-cache-control=max-age%3D604801&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251011T000000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=259200&X-Amz-Credential=AKIA27M5532DYKBCJICE%2F20251011%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=0c2da161912f9a2612de95d77bbd5556d103569ebfc61c6b1d4056fa108e77b5"
+  );
+const getVoice = async () => {
+    console.log("voice call");
+
+    setIsVoiceLoading(true);
+    try {
+      const response = await fetch("https://api.murf.ai/v1/speech/generate", {
+        method: "POST",
+        headers: {
+          "api-key": `${process.env.NEXT_PUBLIC_MURF_API}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: `${currentLesson.message}`,
+          voiceId: "en-US-natalie",
+          pronunciationDictionary: {
+            "2010": {
+              pronunciation: "two thousand and ten",
+              type: "SAY_AS",
+            },
+            live: {
+              pronunciation: "laɪv",
+              type: "IPA",
+            },
+          },
+        }),
+      });
+      const body = await response.json();
+      console.log(body.audioFile)
+      if (body.audioFile) {
+        setUrl(body.audioFile);
+      }
+    } catch (error) {
+      console.error("Error generating voice:", error);
+    } finally {
+      setIsVoiceLoading(false);
+    }
+  };
 
   useEffect(() => {
     setLoadingTime();
+    // fechAudio()
   }, []);
 
   const handleClick = () => {

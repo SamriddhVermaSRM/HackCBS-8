@@ -20,7 +20,7 @@ export default function Home() {
   }, [])
   return (
     <>
-      <main className=" ">
+      <main className="bg-background text-foreground min-h-screen">
         <Hero/>
         <Featured/>
         <Promo/>

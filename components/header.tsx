@@ -28,7 +28,13 @@ export default function Header() {
             >
               Training
             </Button>
-            <Button className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+            <Button 
+            className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            onClick={() => {
+                router.push("/auth");
+              }}
+            >
+
               Login
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
