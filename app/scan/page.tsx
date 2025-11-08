@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useEffectEvent, useRef } from "react";
-import { Gemini, MAX_AUDIO_LENGTH } from "../Ai";
+import { Gemini, MAX_AUDIO_LENGTH } from "@/lib/Ai";
 
 export default function Home() {
   const vidRef = useRef<HTMLVideoElement | null>(null);
