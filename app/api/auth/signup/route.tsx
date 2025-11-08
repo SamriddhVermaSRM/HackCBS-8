@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
+import connectDB from "@/lib/mongodb";
+import User from "@/models/user";
+import Counselor from "@/models/counselor";
 
-const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 export async function POST(req: Request) {
 	try {
+		await connectDB();
 		const { email, password, name, role } = await req.json();
 
 		// Validate input
@@ -19,9 +21,8 @@ export async function POST(req: Request) {
 		}
 
 		// Check if user already exists
-		const existingUser = await prisma.user.findUnique({
-			where: { email },
-		});
+		const Model = role === "counselor" ? Counselor : User;
+		const existingUser = await Model.findOne({ email });
 
 		if (existingUser) {
 			return NextResponse.json(
@@ -33,34 +34,28 @@ export async function POST(req: Request) {
 		// Hash password
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		// Create user based on role
-		let user;
-		if (role === "counselor") {
-			user = await prisma.counselor.create({
-				data: {
-					email,
-					password: hashedPassword,
-					name,
-					role,
-				},
-			});
-		} else {
-			user = await prisma.user.create({
-				data: {
-					email,
-					password: hashedPassword,
-					name,
-					role,
-				},
-			});
-		}
+		// Create user
+		const user = await Model.create({
+			email,
+			password: hashedPassword,
+			name,
+			role,
+		});
 
 		// Generate JWT token
-		const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, {
+		const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, {
 			expiresIn: "24h",
 		});
 
-		return NextResponse.json({ token, user: { ...user, password: undefined } });
+		return NextResponse.json({
+			token,
+			user: {
+				id: user._id,
+				email: user.email,
+				name: user.name,
+				role: user.role,
+			},
+		});
 	} catch (error) {
 		console.error("Signup error:", error);
 		return NextResponse.json(

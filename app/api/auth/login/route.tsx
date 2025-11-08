@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
+import connectDB from "@/lib/mongodb";
+import User from "@/models/user";
+import Counselor from "@/models/counselor";
 
-const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 export async function POST(req: Request) {
 	try {
+		await connectDB();
 		const { email, password, role } = await req.json();
 
 		// Validate input
@@ -19,16 +21,8 @@ export async function POST(req: Request) {
 		}
 
 		// Find user based on role
-		let user;
-		if (role === "counselor") {
-			user = await prisma.counselor.findUnique({
-				where: { email },
-			});
-		} else {
-			user = await prisma.user.findUnique({
-				where: { email },
-			});
-		}
+		const Model = role === "counselor" ? Counselor : User;
+		const user = await Model.findOne({ email });
 
 		if (!user) {
 			return NextResponse.json(
@@ -47,11 +41,19 @@ export async function POST(req: Request) {
 		}
 
 		// Generate JWT token
-		const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, {
+		const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, {
 			expiresIn: "24h",
 		});
 
-		return NextResponse.json({ token, user: { ...user, password: undefined } });
+		return NextResponse.json({
+			token,
+			user: {
+				id: user._id,
+				email: user.email,
+				name: user.name,
+				role: user.role,
+			},
+		});
 	} catch (error) {
 		console.error("Login error:", error);
 		return NextResponse.json(
