@@ -69,46 +69,26 @@ export default function EmotionAnalysisAndLogging({
 
       const audioData = await blobToBase64(audioBlob);
 
-      Gemini.models
-        .generateContent({
-          model: "gemini-2.5-pro",
-          contents: [
-            {
-              inlineData: {
-                mimeType: audioBlob?.type || "audio/webm",
-                data: audioData as string,
-              },
-            },
-            {
-              inlineData: {
-                mimeType: imgBlob?.type || "image/png",
-                data: imgData as string,
-              },
-            },
-            {
-              text: `
-              PROMT:
-              Analyze the emotion in this 10-second audio clip and the image which was collected when the user was giving a reponse on a emotion intelligence test.
-
-              CRITICAL INSTRUCTIONS:
-              - First, analyze the audio clip to determine the speaker's emotional state.
-              - Next, examine the image to identify facial expressions and visual cues that indicate emotion.
-              - Finally, combine insights from both the audio and image analyses to provide a suitable response in the provided format.
-
-              RESPONSE FORMAT:
-              {
-                "audio_emotion": "<detected emotion from audio>",
-                "image_emotion": "<detected emotion from image>",
-                "combined_emotion": "<overall detected emotion combining both audio and image>"
-              }
-              Provide the response strictly in the specified JSON format without any additional text or explanation.
-              `,
-            },
-          ],
-        })
-        .then((res) => {
-          console.log(res, lessonInfo);
-        });
+      fetch("/api/log/response", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          audio: {
+            mimeType: audioBlob?.type || "audio/webm",
+            data: audioData as string,
+          },
+          image: {
+            mimeType: imgBlob?.type || "image/png",
+            data: imgData as string,
+          },
+          answerTime: lessonInfo.answerTime,
+          module_id: lessonInfo.module_id,
+          lesson_id: lessonInfo.lesson_id,
+          timestamp: new Date().toISOString(),
+        }),
+      });
     }, "image/png");
   }, [lessonInfo]);
 
