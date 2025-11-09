@@ -1,6 +1,8 @@
 "use client";
 
 import { Lesson, LessonLog } from "@/types/types";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 import {
   Dispatch,
   FormEvent,
@@ -27,6 +29,7 @@ function Lessons({
   const setLoadingTime = useEffectEvent(() => {
     setLoadedAt(Date.now());
   });
+  const router = useRouter();
   const [isVoiceLoading, setIsVoiceLoading] = useState<boolean>(false);
   const [url, setUrl] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -96,12 +99,26 @@ function Lessons({
       timestamp: new Date().toISOString(),
     };
     setLessonInfo(info);
+
+    if (currentLesson.end) {
+      router.replace("/training");
+      toast(
+        "You have successfully completed a module, you can try our other modules as well",
+      );
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const ans = data.get("ans") as string;
+
+    if (currentLesson.end) {
+      router.replace("/training");
+      toast(
+        "You have successfully completed a module, you can try our other modules as well",
+      );
+    }
 
     if (ans === currentLesson.choices[0].message) {
       setCurrentLessonId((prev) => prev + currentLesson.choices[0].next);
@@ -139,7 +156,9 @@ function Lessons({
                 <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
                   <div className="flex items-center gap-2">
                     <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
-                    <span className="text-sm text-blue-700">Loading audio...</span>
+                    <span className="text-sm text-blue-700">
+                      Loading audio...
+                    </span>
                   </div>
                 </div>
               )}
@@ -223,7 +242,9 @@ function Lessons({
                   <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
                     <div className="flex items-center gap-2">
                       <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
-                      <span className="text-sm text-blue-700">Loading audio...</span>
+                      <span className="text-sm text-blue-700">
+                        Loading audio...
+                      </span>
                     </div>
                   </div>
                 )}
@@ -267,7 +288,9 @@ function Lessons({
                   <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
                     <div className="flex items-center gap-2">
                       <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
-                      <span className="text-sm text-blue-700">Loading audio...</span>
+                      <span className="text-sm text-blue-700">
+                        Loading audio...
+                      </span>
                     </div>
                   </div>
                 )}
@@ -311,7 +334,9 @@ function Lessons({
                   <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
                     <div className="flex items-center gap-2">
                       <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
-                      <span className="text-sm text-blue-700">Loading audio...</span>
+                      <span className="text-sm text-blue-700">
+                        Loading audio...
+                      </span>
                     </div>
                   </div>
                 )}

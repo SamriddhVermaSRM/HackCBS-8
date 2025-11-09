@@ -1,5 +1,9 @@
 "use client";
 
 export default function Partner() {
-	return <></>;
+  return (
+    <>
+      <main>hi</main>
+    </>
+  );
 }

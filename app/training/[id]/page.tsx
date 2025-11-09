@@ -22,7 +22,7 @@ export default function Training() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ lesson_id: currentLessonId }),
-      }
+      },
     ).then((res) => {
       res.json().then((data) => {
         console.log("Module Data:", data);
@@ -36,17 +36,17 @@ export default function Training() {
         router.replace("/");
       }
     });
-  }, []);
-  // console.log("Path:", path);
+  }, [router]);
 
   return (
     <>
-      <EmotionAnalysisAndLogging  lessonInfo={lessonInfo} />
+      <EmotionAnalysisAndLogging lessonInfo={lessonInfo} />
 
       {currentLesson && (
-        <Lessons moduleId={decodeURIComponent(window.location.pathname)
-        .split("/")
-        .pop()!}
+        <Lessons
+          moduleId={
+            decodeURIComponent(window.location.pathname).split("/").pop()!
+          }
           currentLesson={currentLesson}
           currentLessonId={currentLessonId}
           setCurrentLessonId={setCurrentLessonId}
