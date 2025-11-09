@@ -24,13 +24,10 @@ const Card: React.FC<{ title?: string; children: React.ReactNode }> = ({
 };
 
 const page = () => {
-  const [token, setToken] = useState<string | undefined>(undefined);
   const router = useRouter();
   useEffect(() => {
     window.cookieStore.get("jwt").then((cookie) => {
-      console.log(cookie);
-      setToken(cookie?.value);
-      if (token === undefined) {
+      if (cookie === null) {
         router.push("/");
       }
     });
