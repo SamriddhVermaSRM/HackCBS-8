@@ -33,5 +33,5 @@ export type LessonLog = {
 export type EmotionResponse = {
   audio_emotion: string;
   image_emotion: string;
-  combined_emotion: string;
+  combined_emotion: number;
 };

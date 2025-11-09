@@ -1,6 +1,7 @@
 import { Gemini } from "@/lib/Ai";
 import connectDB from "@/lib/mongodb";
 import LessonLog from "@/models/lesson_logs";
+import { EmotionResponse } from "@/types/types";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
     const { userId } = jwt.verify(
       jwtToken?.value || "",
       process.env.JWT_SECRET || "your-secret-key",
-    );
+    ) as { userId: string; role: string };
     console.log("User ID from JWT:", userId);
     // console.log("Log data received:", {
     //   data,
@@ -61,7 +62,7 @@ export async function POST(req: NextRequest) {
           ...data,
           user: userId,
           emotion: JSON.parse(
-            emotion.text?.replace("```json", "").replace("```", ""),
+            emotion.text!.replace("```json", "").replace("```", "") as string,
           ),
         });
       })

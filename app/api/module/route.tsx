@@ -1,5 +1,5 @@
 import modules from "@/data/modules.json";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export function GET() {
   const moduleDescription = Object.entries(modules).map((o) => ({
@@ -10,7 +10,7 @@ export function GET() {
   return NextResponse.json(moduleDescription);
 }
 
-export async function POST(req: NextResponse) {
+export async function POST(req: NextRequest) {
   const { module_id, index } = await req.json();
 
   const moduleLesson =
