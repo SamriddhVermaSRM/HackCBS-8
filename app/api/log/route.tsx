@@ -61,15 +61,18 @@ export async function POST(req: NextRequest) {
 		}
 
 		// build response array with optional module metadata
-			const response = Object.entries(grouped).map(([moduleId, logsArr]) => ({
-				moduleId,
-				module: (modulesData as any)[moduleId] || null,
-				logs: logsArr,
-			}));
+		const response = Object.entries(grouped).map(([moduleId, logsArr]) => ({
+			moduleId,
+			module: (modulesData as any)[moduleId] || null,
+			logs: logsArr,
+		}));
 
 		return NextResponse.json(response);
 	} catch (err) {
 		console.error('/api/log POST error:', err);
-		return NextResponse.json({ error: 'Unable to fetch logs' }, { status: 500 });
+		return NextResponse.json(
+			{ error: 'Unable to fetch logs' },
+			{ status: 500 }
+		);
 	}
 }
