@@ -7,7 +7,7 @@ export default function Header() {
   const [isCounsellor, setIsCounsellor] = useState<boolean | null>(null);
 
   const initializeUserType = useEffectEvent(() => {
-    const role = JSON.parse(localStorage.getItem("user")).role;
+    const { role } = JSON.parse(localStorage.getItem("user") ?? "{}");
     if (role === "counselor") {
       setIsCounsellor(true);
     } else if (role === "user") {
@@ -63,7 +63,7 @@ export default function Header() {
           )
         ) : (
           <Link
-            className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm"
+            className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm flex "
             href={"/auth"}
           >
             Login/Logout
