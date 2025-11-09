@@ -1,367 +1,671 @@
 {
-  "Module 1A": {
-    "name": "The Mirror Moment ",
-    "description": "A training module to help you understand the importance of being good enough.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "Hey! I'm kind of nervous, but also excited to see how we did on the exam."
-      },
-      {
-        "speaker": "teacher",
-        "message": "Alright everyone, here are your results. Hope you’re proud of the effort you put in."
-      },
-      {
-        "speaker": "girl",
-        "message": "You scored 80%. How are you feeling about that?"
-      },
-      {
-        "speaker": "bacche",
-        "message": "Your best friend got 95%. They’re always topping the class. Honestly, it feels like we’ll never be that good. They just seem naturally smart, and we’re... not."
-      },
-      {
-        "speaker": "user",
-        "message": "Hold on—before you decide your potential and worth on the basis of this result, it's important to ask yourself a question: Did you honestly prepare hard enough with focus for the exam?",
-        "choices": [
-          { "message": "Yes", "next": 1 },
-          { "message": "No", "next": 3 }
-        ]
-      },
-      {
-        "speaker": "boy",
-        "message": "Then it's a good time to reach out to someone who can help you look at the situation more clearly and constructively. Talk to your teacher to understand where you might’ve gone wrong. Ask your friend to share their strategy and compare yours to improve. "
-      },
-      {
-        "speaker": "girl",
-        "message": "One final thing that we must understand, that you may not always score well; We all have various flaws, things we are not at all good at, and it'd out duty to improve upon them, but, none of these define your worth, value, or ability to do something remarkable.",
-        "end": true
-      },
-      {
-        "speaker": "boy",
-        "message": "So we have a clear answer, it's not lack of potential. It's  just that we didn't prepare well enough. We can do better next time."
-      },
-      {
-        "speaker": "girl",
-        "message": "One final thing that we must understand, that you may not always score well; We all have various flaws, things we are not at all good at, and it'd out duty to improve upon them, but, none of these define your worth, value, or ability to do something remarkable.",
-        "end": true
-      }
-    ]
-  },
-  "Module 1B": {
-    "name": "The Whisper and the Laugh?",
-    "description": "A training module to help you understand the importance of being good enough.",
-    "lessons": [
-      {
-        "speaker": "girl",
-        "message": "Sometimes even after preparing well, we feel very scared and nervous before exam, you must have too , atleast once. "
-      },
-      {
-        "speaker": "boy",
-        "message": "I know we feel scared of bad results, but let's think a little more on this."
-      },
-      {
-        "speaker": "user",
-        "message": "Are you really just scared of what your friends, teachers and parents might think about you, if you perform not good enough? Do you also feel this is the reason of fear?",
-        "choices": [
-          { "message": "Yes", "next": 1 },
-          { "message": "No", "next": 1 }
-        ]
-      },
-      {
-        "speaker": "boy",
-        "message": "I get it, trying to understand these feelings might get a little complex, but we are with you in this journey of self realization"
-      },
-      {
-        "speaker": "girl",
-        "message": "You know what? Most things in life can be undone, even if you perform bad in a exam, you can try your best to do better the next time."
-      },
-      {
-        "speaker": "boy",
-        "message": "The only way to deal through that feeling of overwhelming nervousness is to know you cannot control or predict everything, just do your part, focus on what you can do. "
-      },
-      {
-        "speaker": "girl",
-        "message": "Remember that your worth isn't tied to a single result. Focus on your effort and growth."
-      },
-      {
-        "speaker": "boy",
-        "message": "Just breathe, work hard, rest and give your best!",
-        "end": true
-      }
-    ]
-  },
-  "Module 1C": {
-    "name": "Handling Peer Pressure",
-    "description": "A module about making choices when facing pressure from friends.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "My friends want to skip the last class to go watch a movie. They say it's fine, but I'm worried about getting caught and missing the review session."
-      },
-      {
-        "speaker": "girl",
-        "message": "Come on, don't be such a worrier! Everyone else is going. It'll be fun, and the teacher probably won't even notice."
-      },
-      {
-        "speaker": "user",
-        "message": "This puts you in a tricky spot. What feels like the main driver for your decision right now?",
-        "choices": [
-          {
-            "message": "I don't want my friends to think I'm boring or leave me out.",
-            "next": 1
-          },
-          {
-            "message": "I know skipping is wrong and I value the review session.",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "boy",
-        "message": "It's totally normal to want to fit in and have fun with friends. But think about the potential consequences – missing important info, getting in trouble. Does fitting in this time outweigh those risks for you?"
-      },
-      {
-        "speaker": "girl",
-        "message": "It takes courage to stand apart from the group when you believe something different. Sticking to your principles, even when it's unpopular, builds self-respect."
-      },
-      {
-        "speaker": "boy",
-        "message": "Real friends might be disappointed initially, but they should respect your decision. You can always suggest hanging out after school or another time."
-      },
-      {
-        "speaker": "bacche",
-        "message": "Yeah, maybe I should just tell them I can't skip, but I'd love to join them another time. It feels better than worrying the whole time.",
-        "end": true
-      }
-    ]
-  },
-  "Module 1D": {
-    "name": "Dealing with Disappointment",
-    "description": "A module about coping with setbacks and not achieving a desired outcome.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "I worked really hard on my project for the science fair, but I didn't win any prizes. I saw others who won, and I feel like my project was just not good enough."
-      },
-      {
-        "speaker": "girl",
-        "message": "Oh, that's disappointing. It's okay to feel let down, especially after putting in a lot of effort and hoping for a different result."
-      },
-      {
-        "speaker": "boy",
-        "message": "Yeah, seeing others succeed when you didn't can sting a bit. It's easy to start doubting yourself."
-      },
-      {
-        "speaker": "user",
-        "message": "It's tough when things don't go as planned. How are you processing this feeling right now?",
-        "choices": [
-          {
-            "message": "It probably means I'm just not cut out for science competitions.",
-            "next": 1
-          },
-          {
-            "message": "I'm disappointed, but maybe I can learn something from this experience.",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "girl",
-        "message": "Not winning this time doesn't define your ability in science. Many successful people faced setbacks. Maybe look at the winning projects – what could you learn from them? Or focus on what you enjoyed about doing your project."
-      },
-      {
-        "speaker": "boy",
-        "message": "That's a constructive way to look at it! What did you learn while making the project? Could you ask a judge or teacher for feedback on how to improve for next time? Focusing on learning turns disappointment into growth."
-      },
-      {
-        "speaker": "girl",
-        "message": "Remember, the effort you put in and the knowledge you gained are valuable outcomes too, regardless of a prize. Keep exploring what interests you!"
-      },
-      {
-        "speaker": "bacche",
-        "message": "You're right. I did learn a lot, and maybe I can ask Mrs. Davis for feedback. It doesn't mean I should give up. Thanks.",
-        "end": true
-      }
-    ]
-  },
-  "Module 2A": {
-    "name": "Empathy & Perspective",
-    "description": "Understanding why someone else might act a certain way, even if it affects you.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "My friend cancelled our plans right at the last minute! I was really looking forward to it, and now I'm just annoyed."
-      },
-      {
-        "speaker": "girl",
-        "message": "That's really frustrating! It's understandable to feel annoyed when plans change suddenly like that."
-      },
-      {
-        "speaker": "user",
-        "message": "It's definitely annoying. Before you stay upset, have you thought about why your friend might have cancelled?",
-        "choices": [
-          {
-            "message": "Not really, I'm just focused on being let down.",
-            "next": 1
-          },
-          {
-            "message": "Maybe? I wonder if something came up for them.",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "boy",
-        "message": "It's okay to feel let down. But sometimes unexpected things happen to people. Could there be a reason they had to cancel that they haven't shared yet?"
-      },
-      {
-        "speaker": "girl",
-        "message": "That's a thoughtful approach. Trying to see it from their side, even without knowing the details, can really help manage your own feelings about it."
-      },
-      {
-        "speaker": "boy",
-        "message": "Maybe reach out and just check if everything's okay? Not accusingly, just genuinely asking. Good communication helps clear up misunderstandings."
-      },
-      {
-        "speaker": "bacche",
-        "message": "Okay, maybe I overreacted a bit. I'll send them a message later to see if they're alright, instead of just being mad.",
-        "end": true
-      }
-    ]
-  },
-  "Module 2B": {
-    "name": "Navigating Online Worlds",
-    "description": "Dealing with negativity online and choosing responsible actions.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "I was scrolling online and saw someone post a really mean comment about a classmate. It felt awful to read."
-      },
-      {
-        "speaker": "boy",
-        "message": "Ugh, that's the worst. It's shocking how cruel people can be online sometimes."
-      },
-      {
-        "speaker": "user",
-        "message": "Seeing things like that can be really upsetting. What's your first instinct when you see something like that?",
-        "choices": [
-          {
-            "message": "Just keep scrolling, it's better not to get involved.",
-            "next": 1
-          },
-          {
-            "message": "I feel like I should do *something*, but I'm not sure what.",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "girl",
-        "message": "Ignoring it can feel safer or easier. But imagine being the person targeted – seeing mean comments and nobody speaking up can feel isolating. Silence sometimes allows negativity to grow."
-      },
-      {
-        "speaker": "boy",
-        "message": "It's great that you want to act positively. You don't have to engage directly with the mean comment, which can sometimes make things worse. You could report the comment, offer support to your classmate privately, or tell a trusted adult like a teacher or parent."
-      },
-      {
-        "speaker": "girl",
-        "message": "Being an 'upstander' online means choosing kindness and responsibility. Don't add to negativity, report harmful content, and support those targeted. It makes the online space better for everyone."
-      },
-      {
-        "speaker": "bacche",
-        "message": "Okay, I think I'll report the comment. And maybe I'll send a quick message to my classmate just to check in and offer support. Ignoring it doesn't feel right.",
-        "end": true
-      }
-    ]
-  },
-  "Module 2C": {
-    "name": "Plans Change!",
-    "description": "Learning to adapt and manage feelings when things don't go as expected.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "Nooo! We planned this awesome outdoor picnic for today, and now it's pouring rain! The whole plan is ruined."
-      },
-      {
-        "speaker": "girl",
-        "message": "Oh, what a bummer! You were all so excited. It's totally okay to feel disappointed when something you planned gets disrupted."
-      },
-      {
-        "speaker": "user",
-        "message": "That's definitely frustrating when the weather doesn't cooperate! How are you handling this unexpected change right now?",
-        "choices": [
-          {
-            "message": "I feel like the whole day is ruined now. Nothing will be as fun.",
-            "next": 1
-          },
-          {
-            "message": "It's annoying, but maybe we can figure out a Plan B?",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "boy",
-        "message": "It's easy to get stuck on the ruined plan. But sometimes, unexpected changes lead to different kinds of fun! Is there any way to adapt? Could the picnic move indoors, or could you do something else fun together?"
-      },
-      {
-        "speaker": "girl",
-        "message": "Thinking of a Plan B is awesome! Being flexible and adaptable is a really valuable life skill. What kind of indoor fun could you have instead? Board games? Movie? Build a fort?"
-      },
-      {
-        "speaker": "boy",
-        "message": "Life often throws unexpected changes our way. Learning to roll with it, find alternatives, and focus on the goal (like spending time with friends) rather than the specific plan makes things much easier and often more memorable!"
-      },
-      {
-        "speaker": "bacche",
-        "message": "Okay, okay. Sulking won't stop the rain. Maybe we can have an 'indoor picnic' in the living room or order pizza and watch a movie together instead. Thanks!",
-        "end": true
-      }
-    ]
-  },
-  "Module 2D": {
-    "name": "Effort vs. Outcome",
-    "description": "Recognizing the value of your own work and dealing with fairness in group settings.",
-    "lessons": [
-      {
-        "speaker": "bacche",
-        "message": "We just got our group project grade back. We got a good grade, but I did almost all the research and writing, and one person barely did anything! It feels so unfair."
-      },
-      {
-        "speaker": "boy",
-        "message": "That's really frustrating. It feels unfair when you put in a ton of effort and someone else coasts but gets the same reward."
-      },
-      {
-        "speaker": "user",
-        "message": "That's a tough situation. What part of this is bothering you the most right now?",
-        "choices": [
-          {
-            "message": "The unfairness of the grade and that they got away with doing little.",
-            "next": 1
-          },
-          {
-            "message": "Knowing I worked hard and learned a lot, even if the situation wasn't ideal.",
-            "next": 2
-          }
-        ]
-      },
-      {
-        "speaker": "girl",
-        "message": "It *is* unfair, and it's okay to feel that way. Sometimes, in future projects, discussing roles clearly beforehand or even talking to the teacher about uneven contributions (constructively!) can help. But also, what did *you* gain from doing the work?"
-      },
-      {
-        "speaker": "boy",
-        "message": "Focusing on your own effort and learning is a strong position. You can't always control what others do, but you *can* control your own integrity and work ethic. Be proud of the skills and knowledge you gained through your hard work."
-      },
-      {
-        "speaker": "girl",
-        "message": "Life isn't always perfectly fair. Learning to find satisfaction in your own effort and accomplishments, regardless of external rewards or what others do, is really important for long-term motivation and happiness."
-      },
-      {
-        "speaker": "bacche",
-        "message": "It still feels a bit unfair, but you're right. I did learn a lot doing the research, and I'm proud of the part I contributed. I'll focus on that, and maybe suggest clearer roles next time.",
-        "end": true
-      }
-    ]
-  }
+	"Module 1A": {
+		"name": "It’s Just Biology",
+		"description": "Learning to Accept Our Changing Body.",
+		"lessons": [
+			{
+				"speaker": "user",
+				"message": "You notice your face again today. The tiny red bumps seem to have doubled overnight. You try to hide them under your hair, but they’re still there. The mirror feels louder than your thoughts.",
+				"choices": [
+					{ "message": "Ugh, why me?", "next": 0 },
+					{ "message": "Maybe if I wash my face more…", "next": 0 },
+					{
+						"message": "I wish I could just look like everyone else.",
+						"next": 0
+					}
+				]
+			},
+			{
+				"speaker": "narrator",
+				"message": "You’re not sure if they’re laughing about you… but it feels like they are. You pull your sleeves down to hide the new hair on your arm. Your mind starts racing: Why is my body changing so weirdly?"
+			},
+			{
+				"speaker": "system",
+				"message": "How do you think this makes you feel right now?",
+				"choices": [
+					{ "message": "Sad", "next": 0 },
+					{ "message": "Angry", "next": 0 },
+					{ "message": "Embarrassed", "next": 0 },
+					{ "message": "Confused", "next": 0 },
+					{ "message": "Revengous", "next": 0 }
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "It’s okay to feel that way — a lot of people your age do."
+			},
+			{
+				"speaker": "friend",
+				"message": "Hey, I noticed you’ve been quiet lately. Are you okay?"
+			},
+			{
+				"speaker": "user",
+				"message": "I just hate how I look these days.",
+				"choices": [
+					{ "message": "Everything’s changing. It’s weird.", "next": 0 },
+					{ "message": "You wouldn’t understand…", "next": 0 }
+				]
+			},
+			{
+				"speaker": "friend",
+				"message": "Actually, I do. My face had so many breakouts last year, I didn’t want to go out at all. I used to think I looked... bad. But then my mom explained something that changed how I see it."
+			},
+			{
+				"speaker": "friend",
+				"message": "She said these are all signs that our body is growing. The hormones that help us become adults also cause acne, hair, voice changes — all that stuff. It’s biology, not beauty."
+			},
+			{
+				"speaker": "friend",
+				"message": "She told me, ‘You’re not meant to look perfect; you’re meant to grow.’ That hit me. Because looks keep changing, but who we are — that’s what really stays."
+			},
+			{
+				"speaker": "narrator",
+				"message": "You look again — the acne’s still there, but somehow, it feels less heavy. Maybe this isn’t about being ‘too much’ or ‘not enough.’ Maybe it’s just your body learning, just like you."
+			},
+			{
+				"speaker": "system",
+				"message": "What’s one thing you can remind yourself when you start feeling bad about your body?",
+				"choices": [
+					{ "message": "It’s just biology.", "next": 0 },
+					{ "message": "I’m growing.", "next": 0 }
+				]
+			},
+			{
+				"speaker": "teacher",
+				"message": "Here’s what you learned today:"
+			},
+			{
+				"speaker": "teacher",
+				"message": "🧠 Hormones change everything — skin, hair, emotions — it’s a normal part of growth."
+			},
+			{
+				"speaker": "teacher",
+				"message": "💬 These changes don’t define your worth or beauty."
+			},
+			{
+				"speaker": "teacher",
+				"message": "💚 Every body grows differently — that’s what makes humans unique."
+			},
+			{
+				"speaker": "teacher",
+				"message": "🌈 The best way to deal with change is kindness to yourself.",
+				"end": true
+			}
+		]
+	},
+	"Module 1B": {
+		"name": "The Highlight Reel: Why You’re Not Behind",
+		"description": "A warm, reflective module about comparison, social media pressure, and self-worth.",
+		"lessons": [
+			{
+				"speaker": "friend",
+				"message": "Look at them… everyone’s doing so well. New achievements, followers, dream lives. I feel like we’re just... stuck."
+			},
+			{
+				"speaker": "friend",
+				"message": "They’re so successful, confident, beautiful. And here we are — doing nothing special. It’s like we’re falling behind before even starting."
+			},
+			{
+				"speaker": "user",
+				"message": "What do you say?",
+				"choices": [
+					{ "message": "Yeah... I feel like that too sometimes.", "next": 1 },
+					{ "message": "I don’t really compare myself much.", "next": 4 }
+				]
+			},
+			{
+				"speaker": "narrator",
+				"message": "You scroll too — and suddenly, every post feels like proof that you’re not enough."
+			},
+			{
+				"speaker": "friend",
+				"message": "Exactly… it’s like no matter what we do, someone’s doing it better."
+			},
+			{
+				"speaker": "teacher",
+				"message": "Hey there, both of you. It’s okay to feel that way. We all do sometimes. But what if I told you… you’re comparing very wrongly?",
+				"next": 3
+			},
+			{
+				"speaker": "friend",
+				"message": "Really? How do you not feel left out?"
+			},
+			{
+				"speaker": "teacher",
+				"message": "I’m so glad to see that you don’t compare yourself. That’s a sign of emotional strength — but it’s also something we all have to keep reminding ourselves."
+			},
+			{
+				"speaker": "teacher",
+				"message": "You see, what you see online isn’t the whole story. People show what they want to show — not the struggles, the failed tries, or the lonely nights behind those perfect pictures."
+			},
+			{
+				"speaker": "narrator",
+				"message": "The screen shows the same perfect photo — then slides to reveal the unseen parts: retakes, stress, late nights, and self-doubt."
+			},
+			{
+				"speaker": "teacher",
+				"message": "Everyone’s timeline is different. Some people start early. Some bloom later. But everyone grows at their own pace — like different trees in the same forest."
+			},
+			{
+				"speaker": "system",
+				"message": "How does comparing yourself online make you feel?",
+				"choices": [
+					{ "message": "😔 Demotivated or sad", "next": 1 },
+					{ "message": "😐 Sometimes insecure", "next": 3 },
+					{ "message": "😊 I try not to let it affect me", "next": 5 }
+				]
+			},
+			{
+				"speaker": "teacher",
+				"message": "That’s a normal reaction. You’re not alone — but remember, your worth isn’t measured by posts or pace.",
+				"next": 3
+			},
+			{
+				"speaker": "teacher",
+				"message": "That awareness is good — the first step to emotional balance is noticing what triggers you.",
+				"next": 3
+			},
+			{
+				"speaker": "teacher",
+				"message": "That’s wonderful! Keep that mindset — but stay mindful of moments when comparison tries to sneak back in."
+			},
+			{
+				"speaker": "teacher",
+				"message": "When you feel ‘behind,’ remind yourself — you’re not in a race. You’re in a journey. Growth happens quietly, sometimes even when we can’t see it."
+			},
+			{
+				"speaker": "teacher",
+				"message": "And maybe, one day, someone will look at you and think, ‘They have it all together’ — without knowing how much courage it took to reach there."
+			},
+			{
+				"speaker": "teacher",
+				"message": "🌱 Everyone’s growth happens at different speeds — there’s no single ‘right timeline.’"
+			},
+			{
+				"speaker": "teacher",
+				"message": "📱 Social media shows the best moments, not the whole story."
+			},
+			{
+				"speaker": "teacher",
+				"message": "🧠 Comparing too much hurts emotional well-being and confidence."
+			},
+			{
+				"speaker": "teacher",
+				"message": "💚 Gratitude, patience, and self-belief are stronger than comparison."
+			},
+			{
+				"speaker": "system",
+				"message": "Truth Check — what do you think?",
+				"choices": [
+					{ "message": "Everyone online is happier than me.", "next": 1 },
+					{
+						"message": "My journey can’t be compared to anyone else’s.",
+						"next": 2
+					},
+					{
+						"message": "People post only their best moments online.",
+						"next": 2
+					},
+					{ "message": "Feeling behind means I’m failing.", "next": 1 }
+				]
+			},
+			{
+				"speaker": "teacher",
+				"message": "❌ False — people online aren’t always happier. Remember, you’re seeing their highlight reel."
+			},
+			{
+				"speaker": "teacher",
+				"message": "✅ True — your path is unique, and your growth can’t be compared."
+			},
+			{
+				"speaker": "narrator",
+				"message": "The teacher smiles and leaves. The two friends sit quietly, watching the sunset."
+			},
+			{
+				"speaker": "friend",
+				"message": "Maybe we’re doing fine after all. Just... on our own clock."
+			},
+			{
+				"speaker": "user",
+				"message": "Yeah, I’ll try to remember that.",
+				"choices": [
+					{
+						"message": "Next time I scroll, I’ll remind myself it’s just a highlight reel.",
+						"next": 0
+					}
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "✨ The only person you need to catch up with… is yourself. ✨",
+				"end": true
+			}
+		]
+	},
+	"Module 1C": {
+		"name": "Restrictions?",
+		"description": "A story about anger, control, and understanding between teens and parents.",
+		"lessons": [
+			{
+				"speaker": "narrator",
+				"message": "You’ve been waiting for this weekend for weeks. Your friends are going to a small event — music, games, laughter — the kind of break you’ve been craving."
+			},
+			{
+				"speaker": "friend",
+				"message": "Everyone’s coming! Just ask your parents, I’m sure they’ll say yes 😄"
+			},
+			{
+				"speaker": "system",
+				"message": "What do you do?",
+				"choices": [
+					{ "message": "Run to ask right away!", "next": 0 },
+					{ "message": "Plan what to say first.", "next": 0 }
+				]
+			},
+			{
+				"speaker": "user",
+				"message": "Hey, Mom/Dad! There’s this event on Saturday. It’s safe — everyone from school’s going. Can I go too?"
+			},
+			{
+				"speaker": "parent",
+				"message": "No. Not this time."
+			},
+			{
+				"speaker": "user",
+				"message": "What? Why?"
+			},
+			{
+				"speaker": "parent",
+				"message": "I said no. That’s it."
+			},
+			{
+				"speaker": "narrator",
+				"message": "That’s it? No explanation. No discussion. Just no. The excitement inside you turns into something heavier."
+			},
+			{
+				"speaker": "system",
+				"message": "How do you feel right now?",
+				"choices": [
+					{ "message": "😞 Disappointed", "next": 1 },
+					{ "message": "😡 Angry", "next": 3 },
+					{ "message": "😔 Sad", "next": 5 },
+					{ "message": "🤷 Confused", "next": 7 }
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "You really wanted this — it hurts when something you looked forward to is shut down."
+			},
+			{
+				"speaker": "system",
+				"message": "You feel it building — not just about this event, but all the times you’ve been told ‘no.’"
+			},
+			{
+				"speaker": "system",
+				"message": "You feel unseen. Like your feelings don’t matter."
+			},
+			{
+				"speaker": "system",
+				"message": "You don’t understand why — and that makes it worse."
+			},
+			{
+				"speaker": "friend",
+				"message": "So? You coming?"
+			},
+			{
+				"speaker": "system",
+				"message": "What are you thinking right now?",
+				"choices": [
+					{ "message": "It’s so unfair. Everyone else gets to go.", "next": 1 },
+					{ "message": "They never trust me.", "next": 1 },
+					{ "message": "Maybe I should sneak out.", "next": 3 },
+					{ "message": "I wish they’d just explain once.", "next": 5 }
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "Anger often hides the wish to be trusted. You want to be seen as responsible."
+			},
+			{
+				"speaker": "system",
+				"message": "You’re so angry, you want to act. But acting on anger often makes things worse later."
+			},
+			{
+				"speaker": "system",
+				"message": "That’s the most natural thing — we all want to understand the why."
+			},
+			{
+				"speaker": "narrator",
+				"message": "You walk to the door. Your parent is nearby, and for a second, you almost say — 'You never let me do anything! Why do you even care so much?'"
+			},
+			{
+				"speaker": "system",
+				"message": "What would you actually do?",
+				"choices": [
+					{ "message": "Yell or slam the door.", "next": 1 },
+					{ "message": "Stay silent and walk away.", "next": 3 },
+					{ "message": "Take a deep breath before saying anything.", "next": 5 }
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "The anger feels powerful for a second — but now there’s guilt, too. You wish you’d said it differently."
+			},
+			{
+				"speaker": "system",
+				"message": "You didn’t explode — but now the sadness sits heavy inside."
+			},
+			{
+				"speaker": "system",
+				"message": "That pause — that’s strength. You didn’t let the anger control you."
+			},
+			{
+				"speaker": "user",
+				"message": "Can I ask you something? I just… want to understand why you didn’t let me go."
+			},
+			{
+				"speaker": "parent",
+				"message": "I know you’re upset, but the event ends late and the road’s not safe at night."
+			},
+			{
+				"speaker": "parent",
+				"message": "Yeah. I wish you’d understand we’re not trying to stop you — just to keep you safe."
+			},
+			{
+				"speaker": "narrator",
+				"message": "For the first time, you hear it — not anger, not control, but care. You realize maybe… this wasn’t about you being untrusted. It was about them worrying."
+			},
+			{
+				"speaker": "system",
+				"message": "After hearing that, how do you feel now?",
+				"choices": [
+					{ "message": "🤔 I understand them better.", "next": 1 },
+					{ "message": "😞 Still disappointed, but calmer.", "next": 3 },
+					{
+						"message": "😡 Still angry — they should’ve explained it earlier.",
+						"next": 5
+					}
+				]
+			},
+			{
+				"speaker": "system",
+				"message": "That’s emotional growth — seeing both sides."
+			},
+			{
+				"speaker": "system",
+				"message": "You’re acknowledging your feelings, and that’s real emotional balance."
+			},
+			{
+				"speaker": "system",
+				"message": "That’s valid too — next time, you could ask calmly for an explanation instead of assuming."
+			},
+			{
+				"speaker": "mentor",
+				"message": "Sometimes parents say no not because they don’t trust you — but because they care too much. They’ve lived through risks you haven’t seen yet. Their ‘no’ often hides the sentence, ‘I’m scared something might hurt you.’"
+			},
+			{
+				"speaker": "mentor",
+				"message": "Keeping patience in those moments doesn’t mean you’re weak. It means you’re wise enough to pause, understand, and talk — not explode."
+			},
+			{
+				"speaker": "teacher",
+				"message": "🧠 Anger comes from wanting control — but patience brings understanding."
+			},
+			{
+				"speaker": "teacher",
+				"message": "❤️ Parents’ strictness often hides concern, not cage."
+			},
+			{
+				"speaker": "teacher",
+				"message": "💬 When you feel angry, pause → breathe → ask → listen."
+			},
+			{
+				"speaker": "teacher",
+				"message": "🌱 You grow stronger every time you choose calm over chaos."
+			},
+			{
+				"speaker": "narrator",
+				"message": "The event passed, and maybe you didn’t go — but something shifted. You didn’t lose control. You learned that sometimes ‘no’ isn’t rejection — it’s protection."
+			},
+			{
+				"speaker": "system",
+				"message": "What’s one thing you can say next time instead of shouting?",
+				"inputType": "text"
+			},
+			{
+				"speaker": "system",
+				"message": "✨ Sometimes understanding doesn’t come from getting permission — but from giving patience. ✨",
+				"end": true
+			}
+		]
+	},
+	"Module 1D": {
+		"name": "Dealing with Disappointment",
+		"description": "A module about coping with setbacks and not achieving a desired outcome.",
+		"lessons": [
+			{
+				"speaker": "bacche",
+				"message": "I worked really hard on my project for the science fair, but I didn't win any prizes. I saw others who won, and I feel like my project was just not good enough."
+			},
+			{
+				"speaker": "girl",
+				"message": "Oh, that's disappointing. It's okay to feel let down, especially after putting in a lot of effort and hoping for a different result."
+			},
+			{
+				"speaker": "boy",
+				"message": "Yeah, seeing others succeed when you didn't can sting a bit. It's easy to start doubting yourself."
+			},
+			{
+				"speaker": "user",
+				"message": "It's tough when things don't go as planned. How are you processing this feeling right now?",
+				"choices": [
+					{
+						"message": "It probably means I'm just not cut out for science competitions.",
+						"next": 1
+					},
+					{
+						"message": "I'm disappointed, but maybe I can learn something from this experience.",
+						"next": 2
+					}
+				]
+			},
+			{
+				"speaker": "girl",
+				"message": "Not winning this time doesn't define your ability in science. Many successful people faced setbacks. Maybe look at the winning projects – what could you learn from them? Or focus on what you enjoyed about doing your project."
+			},
+			{
+				"speaker": "boy",
+				"message": "That's a constructive way to look at it! What did you learn while making the project? Could you ask a judge or teacher for feedback on how to improve for next time? Focusing on learning turns disappointment into growth."
+			},
+			{
+				"speaker": "girl",
+				"message": "Remember, the effort you put in and the knowledge you gained are valuable outcomes too, regardless of a prize. Keep exploring what interests you!"
+			},
+			{
+				"speaker": "bacche",
+				"message": "You're right. I did learn a lot, and maybe I can ask Mrs. Davis for feedback. It doesn't mean I should give up. Thanks.",
+				"end": true
+			}
+		]
+	},
+	"Module 2A": {
+		"name": "Empathy & Perspective",
+		"description": "Understanding why someone else might act a certain way, even if it affects you.",
+		"lessons": [
+			{
+				"speaker": "bacche",
+				"message": "My friend cancelled our plans right at the last minute! I was really looking forward to it, and now I'm just annoyed."
+			},
+			{
+				"speaker": "girl",
+				"message": "That's really frustrating! It's understandable to feel annoyed when plans change suddenly like that."
+			},
+			{
+				"speaker": "user",
+				"message": "It's definitely annoying. Before you stay upset, have you thought about why your friend might have cancelled?",
+				"choices": [
+					{
+						"message": "Not really, I'm just focused on being let down.",
+						"next": 1
+					},
+					{
+						"message": "Maybe? I wonder if something came up for them.",
+						"next": 2
+					}
+				]
+			},
+			{
+				"speaker": "boy",
+				"message": "It's okay to feel let down. But sometimes unexpected things happen to people. Could there be a reason they had to cancel that they haven't shared yet?"
+			},
+			{
+				"speaker": "girl",
+				"message": "That's a thoughtful approach. Trying to see it from their side, even without knowing the details, can really help manage your own feelings about it."
+			},
+			{
+				"speaker": "boy",
+				"message": "Maybe reach out and just check if everything's okay? Not accusingly, just genuinely asking. Good communication helps clear up misunderstandings."
+			},
+			{
+				"speaker": "bacche",
+				"message": "Okay, maybe I overreacted a bit. I'll send them a message later to see if they're alright, instead of just being mad.",
+				"end": true
+			}
+		]
+	},
+	"Module 2B": {
+		"name": "Navigating Online Worlds",
+		"description": "Dealing with negativity online and choosing responsible actions.",
+		"lessons": [
+			{
+				"speaker": "bacche",
+				"message": "I was scrolling online and saw someone post a really mean comment about a classmate. It felt awful to read."
+			},
+			{
+				"speaker": "boy",
+				"message": "Ugh, that's the worst. It's shocking how cruel people can be online sometimes."
+			},
+			{
+				"speaker": "user",
+				"message": "Seeing things like that can be really upsetting. What's your first instinct when you see something like that?",
+				"choices": [
+					{
+						"message": "Just keep scrolling, it's better not to get involved.",
+						"next": 1
+					},
+					{
+						"message": "I feel like I should do *something*, but I'm not sure what.",
+						"next": 2
+					}
+				]
+			},
+			{
+				"speaker": "girl",
+				"message": "Ignoring it can feel safer or easier. But imagine being the person targeted – seeing mean comments and nobody speaking up can feel isolating. Silence sometimes allows negativity to grow."
+			},
+			{
+				"speaker": "boy",
+				"message": "It's great that you want to act positively. You don't have to engage directly with the mean comment, which can sometimes make things worse. You could report the comment, offer support to your classmate privately, or tell a trusted adult like a teacher or parent."
+			},
+			{
+				"speaker": "girl",
+				"message": "Being an 'upstander' online means choosing kindness and responsibility. Don't add to negativity, report harmful content, and support those targeted. It makes the online space better for everyone."
+			},
+			{
+				"speaker": "bacche",
+				"message": "Okay, I think I'll report the comment. And maybe I'll send a quick message to my classmate just to check in and offer support. Ignoring it doesn't feel right.",
+				"end": true
+			}
+		]
+	},
+	"Module 2C": {
+		"name": "Plans Change!",
+		"description": "Learning to adapt and manage feelings when things don't go as expected.",
+		"lessons": [
+			{
+				"speaker": "bacche",
+				"message": "Nooo! We planned this awesome outdoor picnic for today, and now it's pouring rain! The whole plan is ruined."
+			},
+			{
+				"speaker": "girl",
+				"message": "Oh, what a bummer! You were all so excited. It's totally okay to feel disappointed when something you planned gets disrupted."
+			},
+			{
+				"speaker": "user",
+				"message": "That's definitely frustrating when the weather doesn't cooperate! How are you handling this unexpected change right now?",
+				"choices": [
+					{
+						"message": "I feel like the whole day is ruined now. Nothing will be as fun.",
+						"next": 1
+					},
+					{
+						"message": "It's annoying, but maybe we can figure out a Plan B?",
+						"next": 2
+					}
+				]
+			},
+			{
+				"speaker": "boy",
+				"message": "It's easy to get stuck on the ruined plan. But sometimes, unexpected changes lead to different kinds of fun! Is there any way to adapt? Could the picnic move indoors, or could you do something else fun together?"
+			},
+			{
+				"speaker": "girl",
+				"message": "Thinking of a Plan B is awesome! Being flexible and adaptable is a really valuable life skill. What kind of indoor fun could you have instead? Board games? Movie? Build a fort?"
+			},
+			{
+				"speaker": "boy",
+				"message": "Life often throws unexpected changes our way. Learning to roll with it, find alternatives, and focus on the goal (like spending time with friends) rather than the specific plan makes things much easier and often more memorable!"
+			},
+			{
+				"speaker": "bacche",
+				"message": "Okay, okay. Sulking won't stop the rain. Maybe we can have an 'indoor picnic' in the living room or order pizza and watch a movie together instead. Thanks!",
+				"end": true
+			}
+		]
+	},
+	"Module 2D": {
+		"name": "Effort vs. Outcome",
+		"description": "Recognizing the value of your own work and dealing with fairness in group settings.",
+		"lessons": [
+			{
+				"speaker": "bacche",
+				"message": "We just got our group project grade back. We got a good grade, but I did almost all the research and writing, and one person barely did anything! It feels so unfair."
+			},
+			{
+				"speaker": "boy",
+				"message": "That's really frustrating. It feels unfair when you put in a ton of effort and someone else coasts but gets the same reward."
+			},
+			{
+				"speaker": "user",
+				"message": "That's a tough situation. What part of this is bothering you the most right now?",
+				"choices": [
+					{
+						"message": "The unfairness of the grade and that they got away with doing little.",
+						"next": 1
+					},
+					{
+						"message": "Knowing I worked hard and learned a lot, even if the situation wasn't ideal.",
+						"next": 2
+					}
+				]
+			},
+			{
+				"speaker": "girl",
+				"message": "It *is* unfair, and it's okay to feel that way. Sometimes, in future projects, discussing roles clearly beforehand or even talking to the teacher about uneven contributions (constructively!) can help. But also, what did *you* gain from doing the work?"
+			},
+			{
+				"speaker": "boy",
+				"message": "Focusing on your own effort and learning is a strong position. You can't always control what others do, but you *can* control your own integrity and work ethic. Be proud of the skills and knowledge you gained through your hard work."
+			},
+			{
+				"speaker": "girl",
+				"message": "Life isn't always perfectly fair. Learning to find satisfaction in your own effort and accomplishments, regardless of external rewards or what others do, is really important for long-term motivation and happiness."
+			},
+			{
+				"speaker": "bacche",
+				"message": "It still feels a bit unfair, but you're right. I did learn a lot doing the research, and I'm proud of the part I contributed. I'll focus on that, and maybe suggest clearer roles next time.",
+				"end": true
+			}
+		]
+	}
 }
