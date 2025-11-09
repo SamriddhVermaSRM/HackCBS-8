@@ -1,37 +1,38 @@
 export interface Choice {
-  message: string;
-  next: number;
+	message: string;
+	next: number;
 }
 
 export interface Lesson {
-  speaker: string;
-  message: string;
-  choices: Choice[];
-  end?: boolean;
+	speaker: string;
+	message: string;
+	choices: Choice[];
+	next?: number;
+	end?: boolean;
 }
 
 export interface Module {
-  name: string;
-  description: string;
-  lessons: Lesson[];
+	name: string;
+	description: string;
+	lessons: Lesson[];
 }
 
 export type Modules = {
-  [moduleId: string]: Module;
+	[moduleId: string]: Module;
 };
 
 export type LessonLog = {
-  answerTime: number;
-  module_id: string;
-  lesson_id: number;
-  timestamp: string;
-  emotion?: EmotionResponse;
+	answerTime: number;
+	module_id: string;
+	lesson_id: number;
+	timestamp: string;
+	emotion?: EmotionResponse;
 };
 // Example usage:
 // const trainingData: Modules = { ... your JSON data ... };
 
 export type EmotionResponse = {
-  audio_emotion: string;
-  image_emotion: string;
-  combined_emotion: number;
+	audio_emotion: string;
+	image_emotion: string;
+	combined_emotion: number;
 };

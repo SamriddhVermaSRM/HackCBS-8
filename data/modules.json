@@ -7,8 +7,8 @@
 				"speaker": "s1s1",
 				"message": "You notice your face again today. The tiny red bumps seem to have doubled overnight. You try to hide them under your hair, but they’re still there. The mirror feels louder than your thoughts.",
 				"choices": [
-					{ "message": "Ugh, why me?", "next": 0 },
-					{ "message": "Maybe if I wash my face more…", "next": 0 },
+					{ "message": "Ugh, why me?", "next": 1 },
+					{ "message": "Maybe if I wash my face more…", "next": 1 },
 					{
 						"message": "I wish I could just look like everyone else.",
 						"next": 0
@@ -23,11 +23,11 @@
 				"speaker": "s1s2",
 				"message": "How do you think this makes you feel right now?",
 				"choices": [
-					{ "message": "Sad", "next": 0 },
-					{ "message": "Angry", "next": 0 },
-					{ "message": "Embarrassed", "next": 0 },
-					{ "message": "Confused", "next": 0 },
-					{ "message": "Revengous", "next": 0 }
+					{ "message": "Sad", "next": 1 },
+					{ "message": "Angry", "next": 1 },
+					{ "message": "Embarrassed", "next": 1 },
+					{ "message": "Confused", "next": 1 },
+					{ "message": "Revengous", "next": 1 }
 				]
 			},
 			{
@@ -42,8 +42,8 @@
 				"speaker": "s1s3",
 				"message": "I just hate how I look these days.",
 				"choices": [
-					{ "message": "Everything’s changing. It’s weird.", "next": 0 },
-					{ "message": "You wouldn’t understand…", "next": 0 }
+					{ "message": "Everything’s changing. It’s weird.", "next": 1 },
+					{ "message": "You wouldn’t understand…", "next": 1 }
 				]
 			},
 			{
@@ -66,8 +66,8 @@
 				"speaker": "s1s4",
 				"message": "What’s one thing you can remind yourself when you start feeling bad about your body?",
 				"choices": [
-					{ "message": "It’s just biology.", "next": 0 },
-					{ "message": "I’m growing.", "next": 0 }
+					{ "message": "It’s just biology.", "next": 1 },
+					{ "message": "I’m growing.", "next": 1 }
 				]
 			},
 			{
@@ -231,7 +231,7 @@
 				"choices": [
 					{
 						"message": "Next time I scroll, I’ll remind myself it’s just a highlight reel.",
-						"next": 0
+						"next": 1
 					}
 				]
 			},
@@ -258,8 +258,8 @@
 				"speaker": "s3s1",
 				"message": "What do you do?",
 				"choices": [
-					{ "message": "Run to ask right away!", "next": 0 },
-					{ "message": "Plan what to say first.", "next": 0 }
+					{ "message": "Run to ask right away!", "next": 1 },
+					{ "message": "Plan what to say first.", "next": 1 }
 				]
 			},
 			{
