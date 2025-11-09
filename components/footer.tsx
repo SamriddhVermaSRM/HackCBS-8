@@ -7,9 +7,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
+              <img src="/images/logo.png" className="w-12" alt="" />
               <span className="text-white font-bold text-lg">To Observe</span>
             </div>
             <p className="text-sm">

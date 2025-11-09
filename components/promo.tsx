@@ -43,7 +43,7 @@ export default function Section() {
               Tailored experiences for students, counselors, and administrators
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 ml-10 mr-10">
             <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-400 to-blue-600 rounded-bl-full opacity-10 group-hover:opacity-20 transition-opacity" />
               <CardContent className="p-8">
@@ -78,24 +78,6 @@ export default function Section() {
                   className="w-full group-hover:bg-purple-600 group-hover:text-white transition-colors"
                 >
                   Counselor Login
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </CardContent>
-            </Card>
-            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-pink-400 to-pink-600 rounded-bl-full opacity-10 group-hover:opacity-20 transition-opacity" />
-              <CardContent className="p-8">
-                <Shield className="w-12 h-12 text-pink-600 mb-4" />
-                <h4 className="text-2xl font-bold mb-3">For Admins</h4>
-                <p className="text-gray-600 mb-6">
-                  Comprehensive analytics, student management, module creation,
-                  and full system control with powerful reporting tools.
-                </p>
-                <Button
-                  variant="outline"
-                  className="w-full group-hover:bg-pink-600 group-hover:text-white transition-colors"
-                >
-                  Admin Login
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
