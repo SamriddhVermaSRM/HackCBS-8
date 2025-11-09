@@ -1,13 +1,13 @@
 "use client";
 
 import { Lesson, LessonLog } from "@/types/types";
-import axios from "axios";
 import {
   Dispatch,
   FormEvent,
   useEffect,
   useEffectEvent,
   useState,
+  useRef,
 } from "react";
 
 function Lessons({
@@ -15,26 +15,25 @@ function Lessons({
   currentLessonId,
   setCurrentLessonId,
   setLessonInfo,
-  moduleId
+  moduleId,
 }: {
   currentLesson: Lesson;
   currentLessonId: number;
   setCurrentLessonId: Dispatch<React.SetStateAction<number>>;
   setLessonInfo: Dispatch<React.SetStateAction<LessonLog | null>>;
-  moduleId:string;
-
+  moduleId: string;
 }) {
-  const [loadedAt, setLodedAt] = useState<number | null>(null);
+  const [loadedAt, setLoadedAt] = useState<number | null>(null);
   const setLoadingTime = useEffectEvent(() => {
-    setLodedAt(Date.now());
+    setLoadedAt(Date.now());
   });
-  const [IsVoiceLoading,setIsVoiceLoading] = useState<boolean>(false)
-  const [url, setUrl] = useState<string | undefined>(
-    "https://murf.ai/user-upload/one-day-temp/42ab325e-b8ba-4283-8b70-5f9eba231fd8.wav?response-cache-control=max-age%3D604801&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251011T000000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=259200&X-Amz-Credential=AKIA27M5532DYKBCJICE%2F20251011%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=0c2da161912f9a2612de95d77bbd5556d103569ebfc61c6b1d4056fa108e77b5"
-  );
-const getVoice = async () => {
-    console.log("voice call");
+  const [isVoiceLoading, setIsVoiceLoading] = useState<boolean>(false);
+  const [url, setUrl] = useState<string>("");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isAudioLoading, setIsAudioLoading] = useState<boolean>(false);
 
+  const getVoice = async () => {
+    console.log("voice call");
     setIsVoiceLoading(true);
     try {
       const response = await fetch("https://api.murf.ai/v1/speech/generate", {
@@ -59,7 +58,7 @@ const getVoice = async () => {
         }),
       });
       const body = await response.json();
-      console.log(body.audioFile)
+      console.log(body.audioFile);
       if (body.audioFile) {
         setUrl(body.audioFile);
       }
@@ -72,11 +71,24 @@ const getVoice = async () => {
 
   useEffect(() => {
     setLoadingTime();
-    getVoice()
-  }, []);
+    getVoice();
+  }, [currentLessonId]);
+
+  // When a new audio URL is set, show the audio preloader until the
+  // audio reports it's ready to play. This is UI-only: it doesn't change
+  // lesson flow or network behaviour.
+  useEffect(() => {
+    if (url) {
+      setIsAudioLoading(true);
+    } else {
+      setIsAudioLoading(false);
+    }
+  }, [url]);
 
   const handleClick = () => {
-    if (!currentLesson.end) setCurrentLessonId(currentLessonId + 1);
+    if (!currentLesson.end) {
+      setCurrentLessonId(currentLessonId + 1);
+    }
     const info = {
       answerTime: Date.now() - loadedAt!,
       module_id: moduleId,
@@ -89,13 +101,14 @@ const getVoice = async () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const ans = data.get("ans");
+    const ans = data.get("ans") as string;
+
     if (ans === currentLesson.choices[0].message) {
       setCurrentLessonId((prev) => prev + currentLesson.choices[0].next);
-    }
-    if (ans === currentLesson.choices[1].message) {
+    } else if (ans === currentLesson.choices[1].message) {
       setCurrentLessonId((prev) => prev + currentLesson.choices[1].next);
     }
+
     const info = {
       answerTime: Date.now() - loadedAt!,
       module_id: moduleId,
@@ -107,77 +120,253 @@ const getVoice = async () => {
 
   if (currentLesson.speaker === "user") {
     return (
-      <>
+      <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-blue-50 to-indigo-100">
         <form
-          className="flex flex-col m-[30px] max-w-[350px] p-5 border"
+          className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 border border-gray-200"
           onSubmit={handleSubmit}
         >
-          <h2>{currentLesson.message}</h2>
-          <div className="grid grid-cols-2 place-items-center">
-            <label htmlFor="a">
+          {/* Audio Player */}
+          {isVoiceLoading && (
+            <div className="mb-6 p-3 bg-blue-100 border border-blue-300 rounded-md flex items-center gap-2">
+              <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+              <span className="text-sm text-blue-700">Loading voice...</span>
+            </div>
+          )}
+
+          {url && !isVoiceLoading && (
+            <div className="mb-6 bg-gray-100 p-4 rounded-md relative">
+              {isAudioLoading && (
+                <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
+                  <div className="flex items-center gap-2">
+                    <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+                    <span className="text-sm text-blue-700">Loading audio...</span>
+                  </div>
+                </div>
+              )}
+              <audio
+                ref={audioRef}
+                controls
+                className="w-full"
+                src={url}
+                onCanPlayThrough={() => setIsAudioLoading(false)}
+                onLoadedMetadata={() => setIsAudioLoading(false)}
+              />
+            </div>
+          )}
+
+          {/* Question */}
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">
+              {currentLesson.message}
+            </h2>
+          </div>
+
+          {/* Answer Options */}
+          <div className="space-y-3 mb-6">
+            <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
               <input
                 type="radio"
                 name="ans"
-                id="a"
-                className="question"
+                className="w-4 h-4 cursor-pointer"
                 value={currentLesson.choices[0].message}
+                required
               />
-              {currentLesson.choices[0].message}
+              <span className="ml-3 text-gray-700 font-medium">
+                {currentLesson.choices[0].message}
+              </span>
             </label>
 
-            <label htmlFor="b">
+            <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
               <input
                 type="radio"
                 name="ans"
-                id="b"
-                className="question"
+                className="w-4 h-4 cursor-pointer"
                 value={currentLesson.choices[1].message}
+                required
               />
-              {currentLesson.choices[1].message}
+              <span className="ml-3 text-gray-700 font-medium">
+                {currentLesson.choices[1].message}
+              </span>
             </label>
           </div>
-          <button type="submit">Submit</button>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition"
+          >
+            Submit Answer
+          </button>
         </form>
-      </>
+      </div>
     );
   } else if (currentLesson.speaker === "bacche") {
     return (
-      <>
-        <div className="bacche" onClick={handleClick}>
-          <h2>{currentLesson.message}</h2>
-          <img src="/bacche.png" alt="" style={{ height: "400px" }} />
+      <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-green-50 to-emerald-100">
+        <div className="bacche cursor-pointer group" onClick={handleClick}>
+          <div className="text-center mb-6 bg-white p-4 rounded-lg shadow-md max-w-md">
+            <h2 className="text-xl font-bold text-gray-800">
+              {currentLesson.message}
+            </h2>
+          </div>
+          <div className="relative">
+            <img
+              src="/bacche.png"
+              alt="Character - Bacche"
+              style={{ height: "400px" }}
+              className="drop-shadow-lg group-hover:scale-105 transition transform cursor-pointer"
+              title="Click to play audio"
+            />
+            {url && !isVoiceLoading && (
+              <div className="mb-6 bg-gray-100 p-4 rounded-md relative">
+                {isAudioLoading && (
+                  <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+                      <span className="text-sm text-blue-700">Loading audio...</span>
+                    </div>
+                  </div>
+                )}
+                <audio
+                  ref={audioRef}
+                  controls
+                  className="w-full"
+                  src={url}
+                  onCanPlayThrough={() => setIsAudioLoading(false)}
+                  onLoadedMetadata={() => setIsAudioLoading(false)}
+                />
+              </div>
+            )}
+            <div className="text-center mt-4 text-gray-600 text-sm">
+              Click image to play audio or click to continue
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   } else if (currentLesson.speaker === "teacher") {
     return (
-      <>
-        <div className="teacher" onClick={handleClick}>
-          <h2>{currentLesson.message}</h2>
-          <img src="/teacher.png" alt="" style={{ height: "400px" }} />
+      <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-yellow-50 to-orange-100">
+        <div className="teacher cursor-pointer group" onClick={handleClick}>
+          <div className="text-center mb-6 bg-white p-4 rounded-lg shadow-md max-w-md">
+            <h2 className="text-xl font-bold text-gray-800">
+              {currentLesson.message}
+            </h2>
+          </div>
+          <div className="relative">
+            <img
+              src="/teacher.png"
+              alt="Character - Teacher"
+              style={{ height: "400px" }}
+              className="drop-shadow-lg group-hover:scale-105 transition transform cursor-pointer"
+              title="Click to play audio"
+            />
+            {url && !isVoiceLoading && (
+              <div className="mb-6 bg-gray-100 p-4 rounded-md relative">
+                {isAudioLoading && (
+                  <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+                      <span className="text-sm text-blue-700">Loading audio...</span>
+                    </div>
+                  </div>
+                )}
+                <audio
+                  ref={audioRef}
+                  controls
+                  className="w-full"
+                  src={url}
+                  onCanPlayThrough={() => setIsAudioLoading(false)}
+                  onLoadedMetadata={() => setIsAudioLoading(false)}
+                />
+              </div>
+            )}
+            <div className="text-center mt-4 text-gray-600 text-sm">
+              Click image to play audio or click to continue
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   } else if (currentLesson.speaker === "girl") {
     return (
-      <>
-        <div className="girl" onClick={handleClick}>
-          <h2>{currentLesson.message}</h2>
-          <img src="/girl.png" alt="" style={{ height: "400px" }} />
+      <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-pink-50 to-rose-100">
+        <div className="girl cursor-pointer group" onClick={handleClick}>
+          <div className="text-center mb-6 bg-white p-4 rounded-lg shadow-md max-w-md">
+            <h2 className="text-xl font-bold text-gray-800">
+              {currentLesson.message}
+            </h2>
+          </div>
+          <div className="relative">
+            <img
+              src="/girl.png"
+              alt="Character - Girl"
+              style={{ height: "400px" }}
+              className="drop-shadow-lg group-hover:scale-105 transition transform cursor-pointer"
+              title="Click to play audio"
+            />
+            {url && !isVoiceLoading && (
+              <div className="mb-6 bg-gray-100 p-4 rounded-md relative">
+                {isAudioLoading && (
+                  <div className="absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+                      <span className="text-sm text-blue-700">Loading audio...</span>
+                    </div>
+                  </div>
+                )}
+                <audio
+                  ref={audioRef}
+                  controls
+                  className="w-full"
+                  src={url}
+                  onCanPlayThrough={() => setIsAudioLoading(false)}
+                  onLoadedMetadata={() => setIsAudioLoading(false)}
+                />
+              </div>
+            )}
+            <div className="text-center mt-4 text-gray-600 text-sm">
+              Click image to play audio or click to continue
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   } else if (currentLesson.speaker === "boy") {
     return (
-      <>
-        <div className="boy" onClick={handleClick}>
-          <h2>{currentLesson.message}</h2>
-          <img src="/boy.png" alt="" style={{ height: "400px" }} />
+      <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-blue-50 to-cyan-100">
+        <div className="boy cursor-pointer group" onClick={handleClick}>
+          <div className="text-center mb-6 bg-white p-4 rounded-lg shadow-md max-w-md">
+            <h2 className="text-xl font-bold text-gray-800">
+              {currentLesson.message}
+            </h2>
+          </div>
+          <div className="relative">
+            <img
+              src="/boy.png"
+              alt="Character - Boy"
+              style={{ height: "400px" }}
+              className="drop-shadow-lg group-hover:scale-105 transition transform cursor-pointer"
+              title="Click to play audio"
+            />
+            {url && !isVoiceLoading && (
+              <div className="mb-6 bg-gray-100 p-4 rounded-md">
+                <audio ref={audioRef} controls className="w-full" src={url} />
+              </div>
+            )}
+            <div className="text-center mt-4 text-gray-600 text-sm">
+              Click image to play audio or click to continue
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
-  return <></>;
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      Loading...
+    </div>
+  );
 }
 
 export default Lessons;
