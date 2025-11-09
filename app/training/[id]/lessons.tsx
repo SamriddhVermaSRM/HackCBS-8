@@ -120,19 +120,13 @@ function Lessons({
 
 	if (currentLesson.choices) {
 		return (
-			<div
-				className='min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-blue-50 to-indigo-100'
-				style={{
-					background: `url(/lessons/${currentLesson.speaker}.png)`,
-					backgroundPosition: 'center',
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: 'cover',
-				}}
-			>
-				<form
-					className='w-full max-w-md bg-white rounded-lg shadow-lg p-6 border border-gray-200'
-					onSubmit={handleSubmit}
-				>
+			<div className='min-h-screen flex'>
+				{/* Left: content (form, audio, question, answers) */}
+				<div className='w-1/2 flex items-center justify-center p-4 bg-linear-to-br from-blue-50 to-indigo-100'>
+					<form
+						className='w-full max-w-md bg-white rounded-lg shadow-lg p-6 border border-gray-200 '
+						onSubmit={handleSubmit}
+					>
 					{/* Audio Player */}
 					{isVoiceLoading && (
 						<div className='mb-6 p-3 bg-blue-100 border border-blue-300 rounded-md flex items-center gap-2'>
@@ -172,32 +166,30 @@ function Lessons({
 					</div>
 
 					{/* Answer Options */}
-					<div className='space-y-3 mb-6'>
-						<label className='flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition'>
-							<input
-								type='radio'
-								name='ans'
-								className='w-4 h-4 cursor-pointer'
-								value={currentLesson.choices[0].message}
-								required
-							/>
-							<span className='ml-3 text-gray-700 font-medium'>
-								{currentLesson.choices[0].message}
-							</span>
-						</label>
-
-						<label className='flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition'>
-							<input
-								type='radio'
-								name='ans'
-								className='w-4 h-4 cursor-pointer'
-								value={currentLesson.choices[1].message}
-								required
-							/>
-							<span className='ml-3 text-gray-700 font-medium'>
-								{currentLesson.choices[1].message}
-							</span>
-						</label>
+					<div className='space-y-3 mb-6  '>
+						{Array.isArray(currentLesson.choices) &&
+						currentLesson.choices.length > 0 ? (
+							currentLesson.choices.map((choice, i) => (
+								<label
+									key={i}
+									className="flex items-center p-4 border  border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition"
+								>
+									<input
+										type="radio"
+										name="ans"
+										className="w-4 h-4 cursor-pointer"
+										value={choice.message}
+										// mark the first radio as required so the group is required
+										required={i === 0}
+									/>
+									<span className="ml-3 text-gray-700 font-medium">
+										{choice.message}
+									</span>
+								</label>
+							))
+						) : (
+							<div className="text-sm text-gray-500">No choices available.</div>
+						)}
 					</div>
 
 					{/* Submit Button */}
@@ -207,54 +199,66 @@ function Lessons({
 					>
 						Submit Answer
 					</button>
-				</form>
+					</form>
+				</div>
+
+				{/* Right: visual/background image */}
+				<div
+					className='w-1/2 hidden md:block'
+					style={{
+						background: `url(/lessons/${currentLesson.speaker}.png) center/cover no-repeat`,
+					}}
+				/>
 			</div>
 		);
 	} else if (currentLesson.speaker === 'bacche') {
 		return (
-			<div
-				className='min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-green-50 to-emerald-100'
-				style={{
-					background: `url(${currentLesson.speaker}.png)`,
-				}}
-			>
-				<div
-					className='bacche cursor-pointer group'
-					onClick={handleClick}
-				>
-					<div className='text-center mb-6 bg-white p-4 rounded-lg shadow-md max-w-md'>
-						<h2 className='text-xl font-bold text-gray-800'>
-							{currentLesson.message}
-						</h2>
-					</div>
-					<div className='relative'>
-						{url && !isVoiceLoading && (
-							<div className='mb-6 bg-gray-100 p-4 rounded-md relative'>
-								{isAudioLoading && (
-									<div className='absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10'>
-										<div className='flex items-center gap-2'>
-											<div className='animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full'></div>
-											<span className='text-sm text-blue-700'>
-												Loading audio...
-											</span>
+			<div className='min-h-screen flex'>
+				{/* Left: clickable content for bacche */}
+				<div className='w-1/2 flex items-center justify-center p-4 bg-linear-to-br from-green-50 to-emerald-100'>
+					<div className='bacche cursor-pointer group w-full max-w-md' onClick={handleClick}>
+						<div className='text-center mb-6 bg-white p-4 rounded-lg shadow-md'>
+							<h2 className='text-xl font-bold text-gray-800'>
+								{currentLesson.message}
+							</h2>
+						</div>
+						<div className='relative'>
+							{url && !isVoiceLoading && (
+								<div className='mb-6 bg-gray-100 p-4 rounded-md relative'>
+									{isAudioLoading && (
+										<div className='absolute inset-0 bg-white/60 rounded-md flex items-center justify-center z-10'>
+											<div className='flex items-center gap-2'>
+												<div className='animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full'></div>
+												<span className='text-sm text-blue-700'>
+													Loading audio...
+												</span>
+											</div>
 										</div>
-									</div>
-								)}
-								<audio
-									ref={audioRef}
-									controls
-									className='w-full'
-									src={url}
-									onCanPlayThrough={() => setIsAudioLoading(false)}
-									onLoadedMetadata={() => setIsAudioLoading(false)}
-								/>
+									)}
+									<audio
+										ref={audioRef}
+										controls
+										className='w-full'
+										src={url}
+										onCanPlayThrough={() => setIsAudioLoading(false)}
+										onLoadedMetadata={() => setIsAudioLoading(false)}
+									/>
+								</div>
+							)}
+							<div className='text-center mt-4 text-gray-600 text-sm'>
+								Click image to play audio or click to continue
 							</div>
-						)}
-						<div className='text-center mt-4 text-gray-600 text-sm'>
-							Click image to play audio or click to continue
 						</div>
 					</div>
 				</div>
+
+				{/* Right: visual/background image for bacche */}
+				<div
+					className='w-1/2 hidden md:block'
+					style={{
+						background: `url(/lessons/${currentLesson.speaker}.png) center/cover no-repeat`,
+					}}
+				/>
 			</div>
 		);
 	}

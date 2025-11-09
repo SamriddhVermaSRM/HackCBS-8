@@ -56,6 +56,8 @@ const page = () => {
       try {
         const res = await fetch("/api/log");
         const data = await res.json();
+        console.log(data);
+        
         setUsers(Array.isArray(data) ? data : []);
       } catch (e) {
         console.error(e);
