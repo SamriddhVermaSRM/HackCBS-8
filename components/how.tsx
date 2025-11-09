@@ -47,7 +47,7 @@ const How = () => {
                     ]}
                   </h5>
                   <p className="text-sm text-gray-600">
-                    {["Engage with life-scenario modules", "Responses are evaluated in real-time", "Admin dashboard monitors patterns", "Counselors intervene when needed"][
+                    {["Engage with life-scenario modules", "Responses are evaluated in real-time", "Counselors dashboard monitors patterns", "Counselors intervene when needed"][
                       idx
                     ]}
                   </p>
