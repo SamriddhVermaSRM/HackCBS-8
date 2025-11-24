@@ -21,9 +21,9 @@ export async function POST(req: NextRequest) {
     // });
     data.userId = userId;
 
-    Gemini.models
+    return Gemini.models
       .generateContent({
-        model: "gemini-2.5-pro",
+        model: "gemini-2.5-flash-lite",
         contents: [
           {
             inlineData: data.audio,
@@ -58,23 +58,25 @@ export async function POST(req: NextRequest) {
         ],
       })
       .then((emotion) => {
+        const emotionData = JSON.parse(
+          emotion.text!.replace("```json", "").replace("```", "") as string,
+        );
         LessonLog.create({
           ...data,
           user: userId,
-          emotion: JSON.parse(
-            emotion.text!.replace("```json", "").replace("```", "") as string,
-          ),
+          emotion: emotionData,
+        });
+        return NextResponse.json({
+          status: "Log received",
+          response: emotionData,
         });
       })
       .catch((err) => {
         console.error("Gemini API error:", err);
+        return NextResponse.json({ err, code: 500 });
       });
-
-    return new Response(
-      JSON.stringify({ message: "Log data received successfully" }),
-      { status: 200 },
-    );
   } catch (error) {
-    console.error("Log error:", error);
+    console.error("Server error:", error);
+    return NextResponse.json({ error, status: 500 });
   }
 }

@@ -33,7 +33,7 @@ const Card: React.FC<{ title?: string; children: React.ReactNode }> = ({
   );
 };
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [users, setUsers] = useState<Array<any>>([]);
   const [loadingUsers, setLoadingUsers] = useState(false);
@@ -56,8 +56,7 @@ const page = () => {
       try {
         const res = await fetch("/api/log");
         const data = await res.json();
-        console.log(data);
-        
+
         setUsers(Array.isArray(data) ? data : []);
       } catch (e) {
         console.error(e);
@@ -96,15 +95,11 @@ const page = () => {
 
   // helper: aggregate logs array into chart data per day (count of logs)
   function logsToDailyCounts(logs: any[]) {
-    const counts: Record<string, number> = {};
-    for (const l of logs) {
-      const d = new Date(l.timestamp).toISOString().slice(0, 10);
-      counts[d] = (counts[d] || 0) + 1;
-    }
-    const arr = Object.entries(counts)
-      .map(([date, count]) => ({ date, count }))
-      .sort((a, b) => (a.date < b.date ? -1 : 1));
-    return arr;
+    return logs.map((log: any) => {
+      const t = new Date(log.timestamp).toISOString();
+      const x = log.module_id + " : " + log.lesson_id;
+      return { ...log, timestamp: t, x };
+    });
   }
 
   const allLogs = groupedModules.flatMap((m) => m.logs || []);
@@ -114,7 +109,9 @@ const page = () => {
     title,
     logs,
   }) => {
+    console.log(logs);
     const data = logsToDailyCounts(logs);
+    console.log(data);
     return (
       <div>
         {title && <h4 className="text-sm font-medium mb-2">{title}</h4>}
@@ -128,10 +125,10 @@ const page = () => {
                 </linearGradient>
               </defs>
               <CartesianGrid vertical={false} strokeDasharray="3 3" />
-              <XAxis dataKey="date" tickFormatter={(v) => v.slice(5)} />
+              <XAxis dataKey="x" />
               <Tooltip />
               <Area
-                dataKey="count"
+                dataKey="emotion.combined_emotion"
                 type="natural"
                 stroke="#2563eb"
                 fill="url(#g1)"
@@ -301,4 +298,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

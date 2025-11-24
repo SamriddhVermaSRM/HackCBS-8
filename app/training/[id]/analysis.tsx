@@ -87,7 +87,10 @@ export default function EmotionAnalysisAndLogging({
           lesson_id: lessonInfo.lesson_id,
           timestamp: new Date().toISOString(),
         }),
-      });
+      })
+        .then((res) => res.json())
+        .then(console.log)
+        .catch(console.error);
     }, "image/png");
   }, [lessonInfo]);
 
